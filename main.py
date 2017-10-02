@@ -48,15 +48,22 @@ def validate_login():
        password=""
     else:
         if verify != password:
-           if password1 != "" or password != "":
+           if password1 == verify : 
               verify =""
               password=""
+           else:
               error_pass_same = "Password did not match "
+              verify =""
+              password=""
         else:
-            if password == "":
-                verify = ""
-            else:
-                verify = verify
+            if verify == password : 
+               if password1 != "" :
+                   password = ""
+                   verify = ""
+    if password == "":
+        verify = ""
+    else:
+        verify = verify
     if email != "" :
         if " " in email :
             email_error = "entered email has spaces or wrong email "
